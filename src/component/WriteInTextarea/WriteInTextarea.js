@@ -14,8 +14,12 @@ const WriteInTextarea = () =>{
                     <textarea className="commentwrite" name="writemessage" id="writetextcomment" placeholder="Write the Message here..."></textarea>
                     
                     <div>
-                    <input className="button" type="submit" value="Share the Message"/>
+                        <input className="button" type="submit" value="Share the Message"/>
 
+                    </div>
+
+                    <div>
+                        <p>Id to retrive the Message: </p>
                     </div>
 
 

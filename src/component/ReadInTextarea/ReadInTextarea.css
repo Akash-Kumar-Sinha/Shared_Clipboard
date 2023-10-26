@@ -1,7 +1,7 @@
 .readbox{
     border: 2px solid transparent;
     /* margin: 20px; */
-    padding: 10px;
+    padding: 1rem;
     border-radius: 20px;
     width: 100%  ;
 }
@@ -14,8 +14,11 @@ p{
 }
 
 .id{
-    margin-left: 25px;
+    margin-left: 1rem;
+    margin-bottom: 2rem;
     letter-spacing: 3px;
+    padding: 1rem;
+    border-radius: 15px;
     scroll-behavior: auto;
     font-family: sans-serif, Arial, Helvetica;
     height: 2rem;
@@ -27,17 +30,22 @@ p{
     letter-spacing: 2px;
     margin: 5px;
     width: fit-content;
-    background-color: white;
+    background-color: #A55396;
+    font-weight: 700;
     border: none;
     box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
     border-radius: 10px;
 }
 
 .commentread{
-    padding: 15px;
+    padding: 1.5rem;
     width: 100%;
     height: 200px;
     letter-spacing: 3px;
     border: transparent;
     border-radius: 20px;
+}
+
+.commentread{
+    color: black;
 }

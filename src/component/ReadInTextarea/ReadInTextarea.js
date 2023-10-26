@@ -20,7 +20,7 @@ const ReadInTextarea = () =>{
                     </div>
                     
                     <hr/>
-                    <textarea className="commentread" name="readmessage" id="readtextcomment" placeholder="Message will be displayed here"></textarea>
+                    <textarea className="commentread" name="readmessage" id="readtextcomment" disabled={true} placeholder="Message will be displayed here"></textarea>
 
                 </div>
 
