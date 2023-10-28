@@ -3,6 +3,13 @@ body{
   color: white;
 }
 
+.app_name{
+  color: #A55396;
+  /* font-weight: bold; */
+  letter-spacing: 5px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
 section{
   border: 2px solid transparent;
   margin: 3rem;
@@ -28,3 +35,4 @@ address{
   border-radius: 20px;
   filter: drop-shadow(15px 15px 20px black) drop-shadow(-15px -15px 20px black);
 }
+

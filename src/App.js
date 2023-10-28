@@ -14,7 +14,7 @@ function App() {
     <header className="flex">
 
     <div className="flex">
-      <Logo/> <p className="flex align-center f2">Shared Clipboard</p>
+      <Logo/> <p className="app_name flex align-center f2">Shared Clipboard</p>
 
     </div>
     

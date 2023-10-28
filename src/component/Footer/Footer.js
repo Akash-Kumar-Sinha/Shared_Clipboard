@@ -16,7 +16,7 @@ const Footer = () =>{
                     </div>
 
                     <p className="footer_about">
-                    A Message sharing platform. It's provides a simple method to share without getting into any complex process of signup.
+                    A Message sharing platform that provides a simple method to share without getting into any complex process of signing up.
                     </p>
                 </div>
 
