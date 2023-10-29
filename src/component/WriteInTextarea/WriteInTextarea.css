@@ -29,3 +29,7 @@ p{
 .button::after{
     background-color: color;
   }
+  .pin{
+    color: #A55396;
+    font-weight: 600;
+  }

@@ -7,33 +7,33 @@ import Logo from "./component/Logo/Logo";
 import Footer from "./component/Footer/Footer";
 
 
-function App() {
+const App = () => {
+
   return (
     <div className="App">
 
-    <header className="flex">
+      <header className="flex">
 
-    <div className="flex">
-      <Logo/> <p className="app_name flex align-center f2">Shared Clipboard</p>
+        <div className="flex">
+          <Logo/> <p className="app_name flex align-center f2">Shared Clipboard</p>
 
-    </div>
-    
-    <address className="f3">
-      -Akash Kumar Sinha
-    </address>
+        </div>
+        
+        <address className="f3">
+          -Akash Kumar Sinha
+        </address>
 
-    </header>
+      </header>
 
-    <section>
-      
-      <WriteInTextarea/>
-      <ReadInTextarea/>
-      
-    </section>
+      <section>
+        
+        <WriteInTextarea/>
+        <ReadInTextarea/>
+        
+      </section>
 
-    {/* <footer> */}
-      <Footer/>
-    {/* </footer> */}
+    <Footer/>
+
     </div>
   );
 }

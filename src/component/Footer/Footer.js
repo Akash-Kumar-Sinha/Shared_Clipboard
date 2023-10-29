@@ -6,8 +6,6 @@ const Footer = () => {
     return(
         <footer className="shadow footer_box">
 
-            {/* <div className="container"> */}
-
                 <div className="shadow row logo_container">
                     
                     <div className="footer_logo">
@@ -37,19 +35,16 @@ const Footer = () => {
                 <div className="shadow row poweredby flex flex-end">
 
                     <div>
-                        <p flex flex-column>
+                        <div className="flex flex-column">
                             Powered by
                             <Logo/>
-                        </p>
+                        </div>
 
                         <p>-Akash Kumar Sinha</p>    
                     </div>
                     
                 </div>
-
-            {/* </div> */}
-
-
+                
         </footer>
     )
 }
