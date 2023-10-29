@@ -54,7 +54,7 @@ const ReadInTextarea = () =>{
                     id="readtextcomment" 
                     disabled={true} 
                     value={message}
-                    placeholder="Message will be displayed here">
+                    placeholder="Message will be displayed here...">
                     </textarea>
 
                 </div>
