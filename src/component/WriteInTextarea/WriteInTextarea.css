@@ -25,10 +25,7 @@ p{
     border-radius: 20px;
     font-size: 1.5rem;
 }
-
-.button::after{
-    background-color: color;
-  }
+  
   .pin{
     color: #A55396;
     font-weight: 600;

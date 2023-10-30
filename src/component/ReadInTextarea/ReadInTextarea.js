@@ -11,6 +11,7 @@ const ReadInTextarea = () =>{
     }
 
     const onRetrieve = () => {
+        setPin('')
         fetch(`http://localhost:3000/read`, {
             method: 'put',
             headers: {'Content-Type': 'application/json'},
@@ -42,9 +43,16 @@ const ReadInTextarea = () =>{
 
                     <div className="flex flex-column">
                         
-                        <input onChange={onGetPin} className="id" type="number" placeholder="Enter the id" />
-                        <input onClick={onRetrieve} className="button" type="submit" value="Retrive Message"/>
+                        <input 
+                        onChange={onGetPin} 
+                        className="id" 
+                        value={pin}
+                        type="number" 
+                        placeholder="Enter the id" 
+                        />
 
+                        <button onClick={onRetrieve} className="custom-btn btn-16" type="submit">Retrive Message</button>
+                       
                     </div>
                     
                     <hr/>

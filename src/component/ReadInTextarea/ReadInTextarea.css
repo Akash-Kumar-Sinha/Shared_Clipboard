@@ -25,17 +25,55 @@ p{
     border: none;
 }
 
-.button{
-    height: 2rem;
-    letter-spacing: 2px;
-    margin: 5px;
-    width: fit-content;
-    background-color: #A55396;
-    font-weight: 700;
+button {
+    margin: 20px;
+  }
+  .custom-btn {
+    width: 130px;
+    height: 40px;
+    border-radius: 5px;
+    background: #A55396;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    display: inline-block;
+    box-shadow: inset 2px 2px 2px 0px rgba(255, 255, 255, 0.5),
+    7px 7px 20px 0px rgba(16, 29, 54, 0.1), 
+    4px 4px 5px 0px rgba(16, 29, 54, 0.1); 
+    outline: none;
+  }
+
+  .btn-16 {
     border: none;
-    box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
-    border-radius: 10px;
-}
+    color: #000;
+  }
+  .btn-16:after {
+    position: absolute;
+    content: "";
+    width: 0;
+    height: 100%;
+    top: 0;
+    left: 0;
+    direction: rtl;
+    z-index: -1;
+    box-shadow:
+    -7px -7px 20px 0px rgba(16, 29, 54, 0.9), 
+    -4px -4px 5px 0px rgba(16, 29, 54, 0.9), 
+    7px 7px 20px 0px rgba(165, 83, 150, 0.1), 
+    4px 4px 5px 0px rgba(165, 83, 150, 0.1); 
+    transition: all 0.3s ease;
+  }
+  .btn-16:hover {
+    color: #000;
+  }
+  .btn-16:hover:after {
+    left: auto;
+    right: 0;
+    width: 100%;
+  }
+  .btn-16:active {
+    top: 2px;
+  }
 
 .commentread{
     padding: 1.5rem;

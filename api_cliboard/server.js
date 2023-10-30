@@ -20,15 +20,31 @@ const database = require('knex')({
 app.use(bodyParser.json());
 app.use(cors());
 
-// app.get('/', (req,res) => {
-//     res.send("Hello it is working");
-// })
-
 const pinGenerator = () => {
     return Math.floor(1000 + Math.random() * 9000);
 }
 
+const myAsyncDeleteFunction = (pinToDelete) => {
+    setTimeout(() => {
+        console.log('Hello');
+        database('data')
+        .where({ pin: pinToDelete })
+        .del()
+        .then((rowCount) => {
+            if (rowCount > 0) {
+                console.log(`Deleted data with pin ${pinToDelete}`);
+            } else {
+                console.log(`No data found with pin ${pinToDelete}`);
+            }
+        })
+        .catch((err) => {
+            console.error('Error deleting data:', err);
+        });
+    }, 30000);
+}
+
 app.post('/write', (req,res) => {
+
     const message = req.body.message;
 
     if (!message) {
@@ -38,17 +54,18 @@ app.post('/write', (req,res) => {
     const pin = pinGenerator();
     database('data').insert({
         pin: pin,
-        message: message
+        message: message,
     }).then(()=>{
+        myAsyncDeleteFunction(pin);
        return res.status(200).json({
         pin: pin,
-        sendMessage: 'Sucessfully send'
+        sendMessage: 'Sucessfully send',
     })
     }).catch((err)=>{
         return res.status(404).json({err: err,
-            sendMessage: 'Try again'})
+            pin: '',
+            sendMessage: `${err}, Try again`})
     })
-    
 })
 
 app.put('/read', (req,res)=>{

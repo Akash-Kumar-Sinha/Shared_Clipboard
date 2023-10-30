@@ -21,7 +21,8 @@ const WriteInTextarea = () =>{
         .then(data =>{
                 console.log(data.sendMessage)
                 const pin = data.pin;
-                setPin(pin) 
+                setPin(pin)
+                setMessage('')
         })
         .catch((err)=>{
             console.log(err)
@@ -41,11 +42,12 @@ const WriteInTextarea = () =>{
                     onChange={onMessageChange}
                     className="commentwrite" 
                     name="writemessage" 
-                    id="writetextcomment" 
+                    id="writetextcomment"
+                    value={message}
                     placeholder="Write the Message here..."></textarea>
                     
                     <div>
-                        <input onClick={onWrite} className="button" type="submit" value="Share the Message"/>
+                        <button onClick={onWrite} className="custom-btn btn-16" type="submit">Share the Message</button>
 
                     </div>
 
