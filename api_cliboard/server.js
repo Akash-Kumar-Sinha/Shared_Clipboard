@@ -1,5 +1,6 @@
 const express = require('express')
 const bodyParser = require('body-parser');
+const cron = require('node-cron')
 const cors = require('cors');
 
 const app = express();
@@ -56,7 +57,9 @@ app.post('/write', (req,res) => {
         pin: pin,
         message: message,
     }).then(()=>{
-        myAsyncDeleteFunction(pin);
+        cron.schedule('* * * * *', () => {
+            myAsyncDeleteFunction(pin);
+          });
        return res.status(200).json({
         pin: pin,
         sendMessage: 'Sucessfully send',
