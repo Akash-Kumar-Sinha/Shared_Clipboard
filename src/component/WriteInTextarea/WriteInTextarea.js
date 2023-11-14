@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import './WriteInTextarea.css'
 
-const WriteInTextarea = () =>{
+import { getDocs, addDoc, query, where, deleteDoc } from 'firebase/firestore';
 
+const WriteInTextarea = ({collectionRef}) => {
     const [message, setMessage] = useState('')
     const [pin, setPin] = useState('')
 
@@ -10,57 +11,82 @@ const WriteInTextarea = () =>{
         setMessage(event.target.value)
     }
 
-    const onWrite = () => {
-        fetch('http://localhost:3000/write',{
-            method: 'post',
-            headers: {'Content-Type': 'application/json'},
-            body: JSON.stringify({
-                message: message
-            })
-        }).then(response => response.json())
-        .then(data =>{
-                console.log(data.sendMessage)
-                const pin = data.pin;
-                setPin(pin)
-                setMessage('')
-        })
-        .catch((err)=>{
-            console.log(err)
-        })
+    const pinGenerator = async () => {
+        let generatedPin;
+        
+        do {
+            generatedPin = Math.floor(1000 + Math.random() * 9000);
+        } while (await checkPinExists(generatedPin));
+
+        console.log('Generated Pin:', generatedPin);
+        return generatedPin;
+    };
+    
+    const checkPinExists = async (pinToCheck) => {
+        const pinQuery = query(collectionRef, where('pin', '==', pinToCheck));
+        const querySnapshot = await getDocs(pinQuery);
+        
+        return !querySnapshot.empty;
     }
 
-    return(
+    const onWrite = async () => {
+        try {
+            const generatedPin = await pinGenerator();
+            setPin(generatedPin);
+
+            await addDoc(collectionRef, {
+                message: message,
+                pin: generatedPin
+            });
+
+            console.log('Data Added');
+            setTimeout(() => {
+                onDelete(generatedPin);
+            }, 30 * 60 * 1000);
+        } catch (err) {
+            console.log(err.message)
+        }
+    }
+
+    const onDelete = async (generatedPin) => {
+        try {
+            // Delete the document with the specified pin
+            const pinQuery = query(collectionRef, where('pin', '==', generatedPin));
+            const querySnapshot = await getDocs(pinQuery);
+
+            if (!querySnapshot.empty) {
+                const doc = querySnapshot.docs[0];
+                await deleteDoc(doc.ref);
+                console.log('Data Deleted');
+            }
+        } catch (err) {
+            console.log(err.message);
+        }
+    }
+
+    return (
         <div className="writetextarea flex">
-
             <div className="writebox">
-
                 <p>Write the Message and share it to online clipboard</p>
-
                 <div className="writebox innerbox">
-
                     <textarea 
-                    onChange={onMessageChange}
-                    className="commentwrite" 
-                    name="writemessage" 
-                    id="writetextcomment"
-                    value={message}
-                    placeholder="Write the Message here..."></textarea>
+                        onChange={onMessageChange}
+                        className="commentwrite" 
+                        name="writemessage" 
+                        id="writetextcomment"
+                        value={message}
+                        placeholder="Write the Message here..."
+                    ></textarea>
                     
                     <div>
                         <button onClick={onWrite} className="custom-btn btn-16" type="submit">Share the Message</button>
-
                     </div>
 
                     <div>
-                        <p>Id to retrive the Message:  <span className="pin">{pin}</span> </p>
+                        <p>Id to retrieve the Message:  <span className="pin">{pin}</span> </p>
                     </div>
-
-
                 </div>
-
-
             </div>
-
         </div>
     )
 }

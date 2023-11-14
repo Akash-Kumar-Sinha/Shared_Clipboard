@@ -1,52 +1,53 @@
 import React from "react";
-import './Footer.css'
+import "./Footer.css";
 import Logo from "../Logo/Logo";
 
 const Footer = () => {
-    return(
-        <footer className="shadow footer_box">
+  return (
+    <footer className="footer_box">
+    <div className="parent_row">
 
-                <div className="shadow row logo_container">
-                    
-                    <div className="footer_logo">
-                        <Logo/>
-                    </div>
+      <div className="logo_container">
+        <div className="footer_logo">
+          <Logo />
+        </div>
 
-                    <p className="shadow footer_about">
-                    A Message sharing platform that provides a simple method to share without getting into any complex process of signing up.
-                    </p>
+        <p className="footer_about">
+          A Message sharing platform that provides a simple method to share
+          without getting into any complex process of signing up.
+        </p>
+      </div>
+    </div>
 
-                </div>
+    <div className="parent_row">
 
-                <div className="shadow row follow_content">
-                    
-                    <h2>
-                        Follow us
-                    </h2>
 
-                    <div className="img flex">
-                        <img className="twitter" src="/twitter.png" alt="twitter" width="40" />
-                        <img className="linkedin" src="/linkedin.png" alt="linkedin" width="40" />
+      <div className="follow_content">
+        <h2>Follow us</h2>
 
-                    </div>
+        <div className="img">
+          <img className="social-icon" src="/twitter.png" alt="twitter" />
+          <img className="social-icon" src="/linkedin.png" alt="linkedin" />
+        </div>
+      </div>
+    </div>
 
-                </div>
+    <div className="parent_row">
 
-                <div className="shadow row poweredby flex flex-end">
+      <div className="poweredby flex flex-end">
 
-                    <div>
-                        <div className="flex flex-column">
-                            Powered by
-                            <Logo/>
-                        </div>
+        <div>
+            <div className="flex flex-column">
+                Powered by
+                <Logo/>
+            </div>
 
-                        <p>-Akash Kumar Sinha</p>    
-                    </div>
-                    
-                </div>
-                
-        </footer>
-    )
-}
+            <p>-Akash Kumar Sinha</p>    
+        </div>
+      </div>
+    </div>
+    </footer>
+  );
+};
 
 export default Footer;

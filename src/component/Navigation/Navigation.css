@@ -1,0 +1,28 @@
+.custom-navbar {
+    background-color: #A55396;
+    border-radius: 20px;
+    color: #101D36;
+}
+  
+.custom-navbar .dropdown-menu a {
+    color: #101D36;
+}
+
+.custom-btn {
+    color: #101D36;
+    border-color: #101D36;
+}
+  
+.custom-btn:hover {
+    background-color: #101D36;
+    color: #fff;
+}
+
+.custom-input{
+    border-radius: 8px;
+}
+
+.custom-input:hover{
+    background-color: #101D36;
+    color: white;
+}

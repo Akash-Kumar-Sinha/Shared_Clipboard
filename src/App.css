@@ -22,12 +22,27 @@ header{
   justify-content: space-between;
 }
 
-address{
+.link{
+  text-decoration: none;
   display: flex;
   color: #A55396;
   align-items: center;
   margin-right: 2rem;
 }
+
+.link:hover{
+  text-decoration: none;
+}
+
+.font{
+  text-decoration: none;
+  color: #A55396;
+}
+
+.font:hover{
+  text-decoration: none;
+}
+
 
 .App{
   border: 2px solid white;

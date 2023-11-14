@@ -1,76 +1,60 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import './ReadInTextarea.css'
 
-const ReadInTextarea = () =>{
+import { onSnapshot, query, where } from 'firebase/firestore';
 
-    const [message, setMessage] = useState('')
-    const [pin, setPin] = useState('')
+const ReadInTextarea = ({ collectionRef }) => {
+
+    const [message, setMessage] = useState('');
+    const [pin, setPin] = useState('');
 
     const onGetPin = (event) => {
-        setPin(event.target.value)
+        setPin(event.target.value);
     }
 
-    const onRetrieve = () => {
-        setPin('')
-        fetch(`http://localhost:3000/read`, {
-            method: 'put',
-            headers: {'Content-Type': 'application/json'},
-            body: JSON.stringify({
-                pin: pin,
-            })
-        })
-        .then(response => response.json())
-        .then(data => {
-            if (data.id) {
-                setMessage(data.message)
+    useEffect(() => {
+        const pinQuery = query(collectionRef, where('pin', '==', parseInt(pin)));
+
+        const unsubscribe = onSnapshot(pinQuery, (querySnapshot) => {
+            if (!querySnapshot.empty) {
+                const details = querySnapshot.docs.map((doc) => doc.data());
+                setMessage(details[0].message); 
+            }else{
+                setMessage(''); 
             }
-            
-        })
-        .catch(err => {
-            console.log(err);
         });
-    }
 
-    return(
+        return () => unsubscribe();
+
+    }, [pin, collectionRef]);
+
+    return (
         <div className="readtextarea flex">
-
             <div className="readbox">
-
-               
                 <p>Write the id number to read the data</p>
-
                 <div className="readbox innerbox">
-
                     <div className="flex flex-column">
-                        
-                        <input 
-                        onChange={onGetPin} 
-                        className="id" 
-                        value={pin}
-                        type="number" 
-                        placeholder="Enter the id" 
+                        <input
+                            onChange={onGetPin}
+                            className="id"
+                            value={pin}
+                            type="number"
+                            placeholder="Enter the id"
                         />
-
-                        <button onClick={onRetrieve} className="custom-btn btn-16" type="submit">Retrive Message</button>
-                       
                     </div>
-                    
-                    <hr/>
-                    <textarea 
-                    className="commentread" 
-                    name="readmessage" 
-                    id="readtextcomment" 
-                    disabled={true} 
-                    value={message}
-                    placeholder="Message will be displayed here...">
-                    </textarea>
-
+                    <hr />
+                    <textarea
+                        className="commentread"
+                        name="readmessage"
+                        id="readtextcomment"
+                        disabled={true}
+                        value={message}
+                        placeholder="Message will be displayed here..."
+                    />
                 </div>
-
             </div>
-
         </div>
-    )
+    );
 }
 
 export default ReadInTextarea;
