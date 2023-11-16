@@ -13,7 +13,7 @@ import Navigation from "./component/Navigation/Navigation";
 
 const App = () => {
 
-  const collectionRef = collection(database, 'users');
+  const collectionRef = collection(database, 'clipboard_data');
 
   return (
     <div className="App">
@@ -27,7 +27,7 @@ const App = () => {
         </div>
         
         <address className="f3">
-          <a className="font link" target="_blank" href="https://www.linkedin.com/in/akash-kumar-sinha-768400251?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app">
+          <a className="font link" target="_blank" rel="noreferrer" href="https://www.linkedin.com/in/akash-kumar-sinha-768400251?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app">
             -Akash Kumar Sinha
           </a>
         </address>

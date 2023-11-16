@@ -42,7 +42,11 @@ const Footer = () => {
                 <Logo/>
             </div>
 
-            <p>-Akash Kumar Sinha</p>    
+            <p>
+            <a className="font tc white" target="_blank"   rel="noreferrer" href="https://www.linkedin.com/in/akash-kumar-sinha-768400251?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app">
+            -Akash Kumar Sinha
+          </a>
+            </p>    
         </div>
       </div>
     </div>

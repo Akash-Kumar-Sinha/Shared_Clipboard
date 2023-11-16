@@ -15,7 +15,7 @@ const WriteInTextarea = ({collectionRef}) => {
         let generatedPin;
         
         do {
-            generatedPin = Math.floor(1000 + Math.random() * 9000);
+            generatedPin = Math.floor(10000 + Math.random() * 90000);
         } while (await checkPinExists(generatedPin));
 
         console.log('Generated Pin:', generatedPin);
@@ -42,7 +42,7 @@ const WriteInTextarea = ({collectionRef}) => {
             console.log('Data Added');
             setTimeout(() => {
                 onDelete(generatedPin);
-            }, 30 * 60 * 1000);
+            }, 10 * 60 * 1000);
         } catch (err) {
             console.log(err.message)
         }
@@ -50,7 +50,6 @@ const WriteInTextarea = ({collectionRef}) => {
 
     const onDelete = async (generatedPin) => {
         try {
-            // Delete the document with the specified pin
             const pinQuery = query(collectionRef, where('pin', '==', generatedPin));
             const querySnapshot = await getDocs(pinQuery);
 
