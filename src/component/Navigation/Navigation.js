@@ -6,7 +6,6 @@ const Navigation = () => {
         <>
             <nav className="navbar navbar-expand-lg navbar-light custom-navbar">
                 <div className="container-fluid">
-                    <a className="navbar-brand b tc" href="/">Navbar</a>
                     <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                         <span className="navbar-toggler-icon"></span>
                     </button>
@@ -21,6 +20,7 @@ const Navigation = () => {
                                     Projects
                                 </a>
                                 <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <li className="nav-item"><a className="nav-link active b" href="https://akash-kumar-sinha.github.io/card_Me/">Card</a></li>
                                     <li className="nav-item"><a className="nav-link active b" href="https://calculator-d1b87.web.app/">Calculator</a></li>
                                 </ul>
                             </li>

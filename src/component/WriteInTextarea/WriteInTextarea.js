@@ -18,7 +18,6 @@ const WriteInTextarea = ({collectionRef}) => {
             generatedPin = Math.floor(10000 + Math.random() * 90000);
         } while (await checkPinExists(generatedPin));
 
-        console.log('Generated Pin:', generatedPin);
         return generatedPin;
     };
     
@@ -31,22 +30,26 @@ const WriteInTextarea = ({collectionRef}) => {
 
     const onWrite = async () => {
         try {
-            const generatedPin = await pinGenerator();
-            setPin(generatedPin);
-
-            await addDoc(collectionRef, {
-                message: message,
-                pin: generatedPin
-            });
-
-            console.log('Data Added');
-            setTimeout(() => {
-                onDelete(generatedPin);
-            }, 10 * 60 * 1000);
+            if (message.trim().length === 0) {
+                return;
+            }else{
+                const generatedPin = await pinGenerator();
+                setPin(generatedPin);
+        
+                await addDoc(collectionRef, {
+                    message: message,
+                    pin: generatedPin
+                });
+        
+                setTimeout(() => {
+                    onDelete(generatedPin);
+                }, 10 * 60 * 1000);
+            }
         } catch (err) {
             console.log(err.message)
         }
     }
+    
 
     const onDelete = async (generatedPin) => {
         try {
@@ -56,7 +59,6 @@ const WriteInTextarea = ({collectionRef}) => {
             if (!querySnapshot.empty) {
                 const doc = querySnapshot.docs[0];
                 await deleteDoc(doc.ref);
-                console.log('Data Deleted');
             }
         } catch (err) {
             console.log(err.message);

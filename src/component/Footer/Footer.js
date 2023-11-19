@@ -26,8 +26,12 @@ const Footer = () => {
         <h2>Follow us</h2>
 
         <div className="img">
+        <a target="_blank" rel="noreferrer" href="https://x.com/akash_kr_sinha_?t=InYlZxHbZaTR--UcXlcvtQ&s=09">
           <img className="social-icon" src="/twitter.png" alt="twitter" />
+        </a>
+        <a target="_blank" rel="noreferrer" href="https://www.linkedin.com/in/akash-kumar-sinha-768400251?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app">
           <img className="social-icon" src="/linkedin.png" alt="linkedin" />
+        </a>
         </div>
       </div>
     </div>
